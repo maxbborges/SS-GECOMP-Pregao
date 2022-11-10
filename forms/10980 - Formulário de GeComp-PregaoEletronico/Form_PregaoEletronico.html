@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Form</title>
+
+	<link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css">
+	<script src="/resources/js/jquery/jquery.js"></script>
+	<script src="/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/resources/js/mustache/mustache-min.js"></script>
+	<script src="/style-guide/js/fluig-style-guide.min.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js" charset="utf-8"></script>
+	
+	<link href="/style-guide/css/fluig-style-guide-filter.min.css" rel="stylesheet" type="text/css">
+	<link href="/style-guide/css/fluig-style-guide-ratingstars.min.css" rel="stylesheet" type="text/css">
+	<script src="/style-guide/js/fluig-style-guide-filter.min.js"></script>
+	<script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+
+	<link href='/webdesk/customresources?cid=1&resourceName=temaFormulario/0.css' type='text/css' rel='stylesheet' />
+	<!-- <meta charset="utf-8">
+	</meta> -->
+
+	<!-- <link href="./fluig-style-guide-flat.min.css" type="text/css" rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script> -->
+
+	<link href="./custom.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="./custom.js"></script>
+	<script type="text/javascript" src="./functionsCustom.js"></script>
+	<script type="text/javascript" src="./jqueryMask.js"></script>
+	<script type="text/javascript" src="./jqueryMaskMoneyMin.js"></script>
+</head>
+
+<body class="fluig-style-guide">
+
+	<form class="totvs-form grid vertical create-form-components ui-sortable t0" name="createFormComponents"
+		style="padding-left: 10px; padding-right: 10px;">
+		<h1 class="title-form-application">Formulário de GeComp-PregaoEletronico</h1>
+		<div class="">
+			<!-- TELA 1 -->
+			<div class="panel panel-info" id="div_01">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_01"
+							data-target="#cadastrarMinuta" href="#movimentar">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Cadastrar ou Ajustar Minuta de TR/Nota Técnica
+						</a>
+					</h3>
+				</div>
+				<div id="cadastrarMinuta" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Solicitação</label>
+								<input type="text" class="form-control" name="txt_01_solicitacao">
+							</div>
+							<div class="col-sm-2">
+								<label>E-mail</label>
+								<input type="text" class="form-control" name="txt_01_email">
+							</div>
+							<div class="col-sm-2">
+								<label>Data Solicitação</label>
+								<input type="text" class="form-control" name="txt_01_dtSolicitacao">
+							</div>
+							<div class="col-sm-3">
+								<label>Unidade/Coordenação</label>
+								<input type="text" class="form-control" name="txt_01_unidade">
+							</div>
+							<div class="col-sm-3">
+								<label>Numero Processo</label>
+								<input type="text" class="form-control" name="txt_01_nProcesso">
+							</div>
+						</div>
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label>Objeto</label>
+								<textarea class="form-control" rows="3" name="atxt_01_objeto"></textarea>
+							</div>
+						</div>
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label>Justificativa</label>
+								<textarea class="form-control" rows="3" name="atxt_01_justificativa"></textarea>
+							</div>
+						</div>
+						<!-- <div class="row form-input">
+							<div class="col-sm-4">
+								<label>Label textbox</label>
+								<input type="text" class="form-control" name="textbox0">
+							</div>
+							<div class="col-sm-4">
+								<label>Label textbox</label>
+								<input type="text" class="form-control" name="textbox0">
+							</div>
+							<div class="col-sm-4">
+								<label>Label textbox</label>
+								<input type="text" class="form-control" name="textbox0">
+							</div>
+						</div> -->
+						<div class="row form-input">
+							<div class="col-sm-4">
+								<label for="zoom">CNPJ da Filial</label>
+								<input type="zoom" class="form-control" name="zf_01_cnpjFilial" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+										{
+											'field':'A2_LOJA',
+											'label':'A2_LOJA',
+											'standard':true
+										},{
+											'field':'A2_NOME',
+											'label':'A2_NOME'
+										},{
+											'field':'A2_CGC',
+											'label':'A2_CGC'
+										},{
+											'field':'A2_COD',
+											'label':'A2_COD',
+											'visible' : 'false'
+										}
+										]
+									}">
+							</div>
+							<div class="col-sm-4">
+								<label>Código Filial</label>
+								<input type="text" class="form-control" name="txt_01_codFilial">
+							</div>
+							<div class="col-sm-4">
+								<label>Nome Filial</label>
+								<input type="text" class="form-control" name="txt_01_nmFilial">
+							</div>
+						</div>
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label for="zoom">Numero SC</label>
+								<input type="zoom" class="form-control" name="zf_01_nSC" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+										{
+											'field':'A2_LOJA',
+											'label':'A2_LOJA',
+											'standard':true
+										},{
+											'field':'A2_NOME',
+											'label':'A2_NOME'
+										},{
+											'field':'A2_CGC',
+											'label':'A2_CGC'
+										},{
+											'field':'A2_COD',
+											'label':'A2_COD',
+											'visible' : 'false'
+										}
+										]
+									}">
+							</div>
+						</div>
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<!-- <label>Label tabledetail</label> -->
+								<table tablename="tb_itensSC" class="table" noaddbutton="true">
+									<thead>
+										<tr class="tableHeadRow"></tr>
+									</thead>
+									<tbody>
+										<tr class="tableBodyRow">
+											<td>
+												<div class="row form-input">
+													<div class="col-sm-3">
+														<input type="text" name="item_01_nSC" class="form-control">
+													</div>
+													<div class="col-sm-3">
+														<input type="text" name="item_01_cod" class="form-control">
+													</div>
+													<div class="col-sm-3">
+														<input type="text" name="item_01_desc" class="form-control">
+													</div>
+													<div class="col-sm-3">
+														<input type="text" name="item_01_conta" class="form-control">
+													</div>
+												</div>
+												<div class="row form-input">
+													<div class="col-sm-3">
+														<input type="text" name="item_01_qtd" class="form-control">
+													</div>
+													<div class="col-sm-3">
+														<input type="text" name="item_01_proj" class="form-control">
+													</div>
+													<div class="col-sm-3">
+														<input type="text" name="item_01_prog" class="form-control">
+													</div>
+													<div class="col-sm-3">
+														<input type="text" name="item_01_subprog" class="form-control">
+													</div>
+												</div>
+												<div class="row form-input">
+													<div class="col-sm-3">
+														<input type="text" name="item_01_cc" class="form-control">
+													</div>
+													<div class="col-sm-3">
+														<input type="text" name="item_01_entidade" class="form-control">
+													</div>
+													<div class="col-sm-3">
+														<input type="text" name="item_01_conselho" class="form-control">
+													</div>
+													<div class="col-sm-3">
+														<input type="text" name="item_01_grupoOrc" class="form-control">
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<button type="button" class="btn btn-primary" onclick="wdkAddChild('tb_itensSC')">Novo
+									Registro</button>
+							</div>
+						</div>
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label>Observações:</label>
+								<textarea class="form-control" rows="3" name="atxt_01_obsTermo"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 2 -->
+			<div class="panel panel-info" id="div_11">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_11" data-target="#apMinuta"
+							href="#apMinuta">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Aprovar TR / Nota Tecnica
+						</a>
+					</h3>
+				</div>
+				<div id="apMinuta" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Aprovado?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_11_apTR" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_11_apTR" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_11_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NECESSÁRIO SABER O QUE É 'PARAMETROS' E 'ESPECIE' -->
+			<!-- TELA 3 -->
+			<div class="panel panel-info" id="div_15">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_15"
+							data-target="#cadastrarEstimativa" href="#cadastrarEstimativa">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Cadastrar estimativa
+						</a>
+					</h3>
+				</div>
+				<div id="cadastrarEstimativa" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class='col-sm-2'>
+								<label>Form Contrat</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_15_formatoContratacao"
+												value="item">Item</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_15_formatoContratacao"
+												value="lote">Lote</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<label for="zoom">Regra de Lic</label>
+								<input type="zoom" class="form-control" name="zf_15_regraLic" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+										{
+											'field':'A2_LOJA',
+											'label':'A2_LOJA',
+											'standard':true
+										},{
+											'field':'A2_NOME',
+											'label':'A2_NOME'
+										},{
+											'field':'A2_CGC',
+											'label':'A2_CGC'
+										},{
+											'field':'A2_COD',
+											'label':'A2_COD',
+											'visible' : 'false'
+										}
+										]
+									}">
+							</div>
+							<div class="col-sm-3">
+								<label for="zoom">Modalidade Acatada</label>
+								<input type="zoom" class="form-control" name="zf_15_modAcatada" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+										{
+											'field':'A2_LOJA',
+											'label':'A2_LOJA',
+											'standard':true
+										},{
+											'field':'A2_NOME',
+											'label':'A2_NOME'
+										},{
+											'field':'A2_CGC',
+											'label':'A2_CGC'
+										},{
+											'field':'A2_COD',
+											'label':'A2_COD',
+											'visible' : 'false'
+										}
+										]
+									}">
+							</div>
+							<div class="col-sm-2">
+								<label>Valor Estimado</label>
+								<input type="text" name="txt_valorEstimado" class="form-control">
+							</div>
+							<div class="col-sm-2">
+								<label for="zoom">Email Gestor</label>
+								<input type="zoom" class="form-control" name="zf_15_gestor" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+										{
+											'field':'A2_LOJA',
+											'label':'A2_LOJA',
+											'standard':true
+										},{
+											'field':'A2_NOME',
+											'label':'A2_NOME'
+										},{
+											'field':'A2_CGC',
+											'label':'A2_CGC'
+										},{
+											'field':'A2_COD',
+											'label':'A2_COD',
+											'visible' : 'false'
+										}
+										]
+									}">
+							</div>
+						</div>
+
+
+
+						<div class="row">
+							<div class="col-sm-12">
+								<label>Justificativa Modalidade</label>
+								<textarea class="form-control" rows="3" name="atxt_15_justificativa"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<table tablename="tbl_15_cadastrarWbc" class="table" noaddbutton="true">
+									<thead>
+										<tr class="tableHeadRow"></tr>
+									</thead>
+									<tbody>
+										<tr class="tableBodyRow form-input row">
+											<td class="col-sm-2">
+												<input type="text" name="item_15_codItem" class="form-control" readonly>
+											</td>
+											<td class="col-sm-2">
+												<input type="text" name="item_15_codProd" class="form-control" readonly>
+											</td>
+											<td class="col-sm-2">
+												<input type="text" name="item_15_descProd" class="form-control"
+													readonly>
+											</td>
+											<td class="col-sm-3">
+												<input type="text" name="item_15_qtd" class="form-control" readonly>
+											</td>
+											<td class="col-sm-3">
+												<input type="text" name="item_15_wbc" class="form-control" readonly>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<table tablename="tbl_15_cadastarValor" class="table" noaddbutton="true">
+									<thead>
+										<tr class="tableHeadRow"></tr>
+									</thead>
+									<tbody>
+										<tr class="tableBodyRow form-input row">
+											<td class="col-sm-2">
+												<input type="text" name="item2_15_codItem" class="form-control"
+													readonly>
+											</td>
+											<td class="col-sm-2">
+												<input type="text" name="item2_15_codProd" class="form-control"
+													readonly>
+											</td>
+											<td class="col-sm-2">
+												<input type="text" name="item2_15_descProd" class="form-control"
+													readonly>
+											</td>
+											<td class="col-sm-2">
+												<input type="text" name="item2_15_fornec" class="form-control" readonly>
+											</td>
+											<td class="col-sm-2">
+												<input type="text" name="item2_15_qtd" class="form-control" readonly>
+											</td>
+											<td class="col-sm-1">
+												<input type="text" name="item2_15_valUnit" class="form-control"
+													readonly>
+											</td>
+											<td class="col-sm-1">
+												<input type="text" name="item2_15_valTotal" class="form-control"
+													readonly>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NECESSÁRIO FAZER A TELA DE PARAMETROS -->
+
+			<!-- TELA 5 -->
+			<div class="panel panel-info" id="div_16">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_16"
+							data-target="#realizarAnalise" href="#realizarAnalise">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Realizar analise de mercado
+						</a>
+					</h3>
+				</div>
+				<div id="realizarAnalise" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label for="zoom">CNPJ</label>
+									<input type="zoom" class="form-control" name="zf_16_cnpj" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+										{
+											'field':'A2_LOJA',
+											'label':'A2_LOJA',
+											'standard':true
+										},{
+											'field':'A2_NOME',
+											'label':'A2_NOME'
+										},{
+											'field':'A2_CGC',
+											'label':'A2_CGC'
+										},{
+											'field':'A2_COD',
+											'label':'A2_COD',
+											'visible' : 'false'
+										}
+										]
+									}">
+							</div>
+							<div class="col-sm-2">
+								<label for="zoom">Descrição do Item</label>
+									<input type="zoom" class="form-control" name="zf_16_descricaoItem" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+										{
+											'field':'A2_LOJA',
+											'label':'A2_LOJA',
+											'standard':true
+										},{
+											'field':'A2_NOME',
+											'label':'A2_NOME'
+										},{
+											'field':'A2_CGC',
+											'label':'A2_CGC'
+										},{
+											'field':'A2_COD',
+											'label':'A2_COD',
+											'visible' : 'false'
+										}
+										]
+									}">
+							</div>
+							<div class="col-sm-2">
+								<label>Quantitativo</label>
+								<input type="text" class="form-control" name="txt_16_quantitativo">
+							</div>
+							<div class="col-sm-2">
+								<label>Valor Unitário</label>
+								<input type="text" class="form-control" name="txt_16_vlUnitario">
+							</div>
+							<div class="col-sm-2">
+								<label>Valor Total</label>
+								<input type="text" class="form-control" name="txt_16_vlTotal">
+							</div>
+							<div class="col-sm-2">
+								<button type="button" class="btn btn-primary" onclick="">Novo Registro</button>
+							</div>
+						</div>
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<table tablename="tb_16_itensSC" class="table" noaddbutton="true">
+									<thead>
+										<tr class="tableHeadRow"></tr>
+									</thead>
+									<tbody>
+										<tr class="tableBodyRow">
+											<td>
+												<div class="row form-input">
+													<div class="col-sm-2">
+														<input type="text" name="item_16_empresa" class="form-control">
+													</div>
+													<div class="col-sm-10">
+														<textarea class="form-control" rows="3"
+															name="item_16_descricao"></textarea>
+													</div>
+												</div>
+												<div class="row form-input">
+													<div class="col-sm-4">
+														<input type="text" name="item_16_quantitativo"
+															class="form-control">
+													</div>
+													<div class="col-sm-4">
+														<input type="text" name="item_16_vlUnitario"
+															class="form-control">
+													</div>
+													<div class="col-sm-4">
+														<input type="text" name="item_16_vlTotal" class="form-control">
+													</div>
+												</div>
+
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NECESSÁRIO FAZER A TELA DE NOTA TECNICA -->
+
+			<!-- TELA 6 -->
+			<div class="panel panel-info" id="div_17">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_17" data-target="#apAnalise"
+							href="#apAnalise">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Aprovar Analise
+						</a>
+					</h3>
+				</div>
+				<div id="apAnalise" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-6">
+								<label>Aprovado</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_17_apAnalise" value="sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_17_apAnalise" value="nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_17_obs" placeholder=""
+									data-size="big"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 7 -->
+			<div class="panel panel-info" id="div_321">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_321"
+							data-target="#fazerDespacho" href="#fazerDespacho">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Fazer Despacho de autorizacao
+						</a>
+					</h3>
+				</div>
+				<div id="fazerDespacho" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Aprovar Despacho?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_321_apDespacho" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_321_apDespacho" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_321_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- TELA 8 -->
+			<div class="panel panel-info" id="div_59">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_59" data-target="#apDespacho"
+							href="#apDespacho">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Despacho de autorizacao
+						</a>
+					</h3>
+				</div>
+				<div id="apDespacho" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Aprovar Despacho?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_59_apDespacho" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_59_apDespacho" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_59_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 9 -->
+			<div class="panel panel-info" id="div_67">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_67"
+							data-target="#elaborarEdital" href="#elaborarEdital">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Elaborar o Edital
+						</a>
+					</h3>
+				</div>
+				<div id="elaborarEdital" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Aprovado?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_67_aprovar" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_67_aprovar" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_67_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 10 -->
+			<div class="panel panel-info" id="div_68">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_68"
+							data-target="#distribuirProcesso2" href="#distribuirProcesso2">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Distribuir o processo
+						</a>
+					</h3>
+				</div>
+				<div id="distribuirProcesso2" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_68_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NECESSÁRIO FAZER TELA DE ANALISE PREVIA -->
+
+			<!-- TELA 11 -->
+			<div class="panel panel-info" id="div_78">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_78"
+							data-target="#elaborar_parecer_minuta" href="#elaborar_parecer_minuta">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Elaborar parecer juridico e a minuta do termo aditivo
+						</a>
+					</h3>
+				</div>
+				<div id="elaborar_parecer_minuta" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-2">
+								<div class="form-input">
+									<label>Possui recomendação?</label>
+									<div class="radio-options">
+										<div class="radio">
+											<label><input type="radio" name="rd_78_recomendacao" value="sim">Sim</label>
+										</div>
+										<div class="radio">
+											<label><input type="radio" name="rd_78_recomendacao" value="nao">Não</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Justificativa</label>
+								<textarea class="form-control" rows="3" name="atxt_78_obs"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-input">
+											<label>Paracer juridico - Observação</label>
+											<textarea class="form-control" rows="3" name="atxt_78_pj" placeholder=""
+												data-size="big"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row row-btns">
+									<div class="col-sm-4">
+										<button type="button" id="btn_78_anexarParecer"
+											class="btn btn-info required">Anexar
+											Parecer</button>
+									</div>
+									<div class="col-sm-4">
+										<button type="button" id="btn_78_downloadParecer" class="btn btn-info">Download
+											do
+											Parecer</button>
+									</div>
+									<div class="col-sm-4">
+										<button type="button" id="btn_78_visualizarParecer"
+											class="btn btn-info">Visualizar
+											Parecer</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-input">
+											<label>Minuta do Termo Aditivo - Observação</label>
+											<textarea class="form-control" rows="3" name="atxt_78_mta" placeholder=""
+												data-size="big"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row row-btns">
+									<div class="col-sm-4">
+										<button type="button" id="btn_78_anexarMinuta"
+											class="btn btn-info required">Anexar
+											Minuta</button>
+									</div>
+									<div class="col-sm-4">
+										<button type="button" id="btn_78_downloadMinuta" class="btn btn-info">Download
+											Minuta</button>
+									</div>
+									<div class="col-sm-4">
+										<button type="button" id="btn_78_visualizarMinuta"
+											class="btn btn-info">Visualizar
+											Minuta</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- FAZER TELA PARA SELECIONAR ADVOGADO REVISAO -->
+
+			<!-- TELA 12 -->
+			<div class="panel panel-info" id="div_80">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_80"
+							data-target="#revisar_parecer_minuta" href="#revisar_parecer_minuta">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Revisar parecer jurídico e a minuta do termo aditivo
+						</a>
+					</h3>
+				</div>
+				<div id="revisar_parecer_minuta" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 form-input">
+								<label class="required">Parecer e Minutas aprovadas?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_80_revParecer" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_80_revParecer" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 form-input">
+								<label>Observação</label>
+								<textarea class="form-control" rows="3" name="atxt_80_obsApParecer"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 13 -->
+			<div class="panel panel-info" id="div_237">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_237"
+							data-target="#ap_parecer_coordenador" href="#ap_parecer_coordenador">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Aprovar parecer - Coordenador
+						</a>
+					</h3>
+				</div>
+				<div id="ap_parecer_coordenador" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 form-input">
+								<label class="required">Parecer e Minutas aprovadas?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_237_revParecer" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_237_revParecer" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 form-input">
+								<label>Observação</label>
+								<textarea class="form-control" rows="3" name="atxt_237_obsApParecer"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 14 -->
+			<div class="panel panel-info" id="div_84">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_84"
+							data-target="#ap_parecer_assessor" href="#ap_parecer_assessor">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Aprovar parecer - Assessor
+						</a>
+					</h3>
+				</div>
+				<div id="ap_parecer_assessor" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 form-input">
+								<label class="required">Parecer e Minutas aprovadas?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_84_revParecer" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_84_revParecer" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 form-input">
+								<label>Observação</label>
+								<textarea class="form-control" rows="3" name="atxt_84_obsApParecer"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NECESSÁRIO FZR TELA REALIZAR AJUSTES (91) -->
+
+			<!-- TELA 15 -->
+			<div class="panel panel-info" id="div_111">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_111"
+							data-target="#publicarEdital" href="#publicarEdital">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Publicar Edital
+						</a>
+					</h3>
+				</div>
+				<div id="publicarEdital" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-3">
+								<label>Número do edital</label>
+								<input type="text" class="form-control" name="txt_111_numeroEdital">
+							</div>
+							<div class="col-sm-9">
+								<label>Objeto do Edital</label>
+								<textarea class="form-control" rows="3" name="atxt_111_objeto" placeholder=""
+									data-size="big"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<button type="button" class="btn btn-info">Subir Edital</button>
+							</div>
+							<div class="col-sm-6">
+								<button type="button" class="btn btn-info">Baixar Edital</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 16 -->
+			<div class="panel panel-info" id="div_117">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_17"
+							data-target="#realizarPregao" href="#realizarPregao">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Pregão Eletronico
+						</a>
+					</h3>
+				</div>
+				<div id="realizarPregao" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<button type="button" class="btn btn-info">Subir Arquivos</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 17 -->
+			<div class="panel panel-info" id="div_122">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_122"
+							data-target="#analiseCompliance" href="#analiseCompliance">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Análise Compliance
+						</a>
+					</h3>
+				</div>
+				<div id="analiseCompliance" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label>Memorando</label>
+								<textarea class="form-control" rows="3" name="atxt_122_memorando"></textarea>
+							</div>
+						</div>
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<button type="button" class="btn btn-info">Anaxar Arquivo</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NECESSÁRIO FZR TELA AJUSTAR (124) -->
+
+			<!-- TELA 18 -->
+			<div class="panel panel-info" id="div_129">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_129"
+							data-target="#distribuirProcesso" href="#distribuirProcesso">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Distribuir o processo
+						</a>
+					</h3>
+				</div>
+				<div id="distribuirProcesso" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_129_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 19 -->
+			<div class="panel panel-info" id="div_131">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_131"
+							data-target="#elaborar_parecer_minuta_2" href="#elaborar_parecer_minuta_2">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Elaborar parecer juridico e a minuta do termo aditivo
+						</a>
+					</h3>
+				</div>
+				<div id="elaborar_parecer_minuta_2" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-input">
+											<label>Paracer juridico - Observação</label>
+											<textarea class="form-control" rows="3" name="atxt_131_pj" placeholder=""
+												data-size="big"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row row-btns">
+									<div class="col-sm-4">
+										<button type="button" id="btn_131_anexarParecer"
+											class="btn btn-info required">Anexar
+											Parecer</button>
+									</div>
+									<div class="col-sm-4">
+										<button type="button" id="btn_131_downloadParecer" class="btn btn-info">Download
+											do
+											Parecer</button>
+									</div>
+									<div class="col-sm-4">
+										<button type="button" id="btn_131_visualizarParecer"
+											class="btn btn-info">Visualizar
+											Parecer</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-input">
+											<label>Minuta do Termo Aditivo - Observação</label>
+											<textarea class="form-control" rows="3" name="atxt_131_mta" placeholder=""
+												data-size="big"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row row-btns">
+									<div class="col-sm-4">
+										<button type="button" id="btn_131_anexarMinuta"
+											class="btn btn-info required">Anexar
+											Minuta</button>
+									</div>
+									<div class="col-sm-4">
+										<button type="button" id="btn_131_downloadMinuta" class="btn btn-info">Download
+											Minuta</button>
+									</div>
+									<div class="col-sm-4">
+										<button type="button" id="btn_131_visualizarMinuta"
+											class="btn btn-info">Visualizar
+											Minuta</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NECESSÁRIO FZR TELA AJUSTAR 250 -->
+
+			<!-- FAZER TELA PARA SELECIONAR ADVOGADO REVISAO -->
+			<!-- REVISAR PRECISA INCLUIR ENCAMINHAR PARA QUAL ATIVIDADE -->
+
+			<!-- TELA 20 -->
+			<div class="panel panel-info" id="div_133">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_133"
+							data-target="#revisar_parecer_minuta_2" href="#revisar_parecer_minuta_2">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Revisar parecer jurídico e a minuta do termo aditivo
+						</a>
+					</h3>
+				</div>
+				<div id="revisar_parecer_minuta_2" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 form-input">
+								<label class="required">Parecer e Minutas aprovadas?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_133_revParecer" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_133_revParecer" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 form-input">
+								<label>Observação</label>
+								<textarea class="form-control" rows="3" name="atxt_133_obsApParecer"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 21 -->
+			<div class="panel panel-info" id="div_253">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_253"
+							data-target="#ap_parecer_coordenador_2" href="#ap_parecer_coordenador_2">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Aprovar parecer - Coordenador
+						</a>
+					</h3>
+				</div>
+				<div id="ap_parecer_coordenador_2" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 form-input">
+								<label class="required">Parecer e Minutas aprovadas?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_253_revParecer" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_2253_revParecer" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 form-input">
+								<label>Observação</label>
+								<textarea class="form-control" rows="3" name="atxt_253_obsApParecer"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 22 -->
+			<div class="panel panel-info" id="div_138">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_138"
+							data-target="#ap_parecer_assessor_2" href="#ap_parecer_assessor_2">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Aprovar parecer - Assessor
+						</a>
+					</h3>
+				</div>
+				<div id="ap_parecer_assessor_2" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 form-input">
+								<label class="required">Parecer e Minutas aprovadas?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_138_revParecer" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_138_revParecer" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 form-input">
+								<label>Observação</label>
+								<textarea class="form-control" rows="3" name="atxt_138_obsApParecer"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 23 -->
+			<div class="panel panel-info" id="div_259">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_259"
+							data-target="#DespachoHomologacao" href="#DespachoHomologacao">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							DFazer espacho de Homologacao
+						</a>
+					</h3>
+				</div>
+				<div id="DespachoHomologacao" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_259_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 24 -->
+			<div class="panel panel-info" id="div_152">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_152"
+							data-target="#DespachoHomologacao" href="#ApDespachoHomologacao1">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Aprovar Despacho de Homologacao
+						</a>
+					</h3>
+				</div>
+				<div id="DespachoHomologacao" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Aprovar Despacho?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_152_apDespacho" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_152_apDespacho" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_152_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 24 -->
+			<div class="panel panel-info" id="div_308">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_308"
+							data-target="#ApDespachoHomologacao2" href="#ApDespachoHomologacao2">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Aprovar Despacho de Homologacao 2
+						</a>
+					</h3>
+				</div>
+				<div id="ApDespachoHomologacao2" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Aprovar Despacho?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_308_apDespacho" value="Sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_308_apDespacho" value="Nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_308_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NECESSÁRIO FZR TELA analisar 155 -->
+
+			<!-- TELA 28 -->
+			<div class="panel panel-info" id="div_324">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_324"
+							data-target="#cadastrar_empresa" href="#cadastrar_empresa">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Cadastrar dados do fornecedor
+						</a>
+					</h3>
+				</div>
+				<div id="cadastrar_empresa" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-group">
+							<div class="col-sm-12">
+								<label for="zoom">Assinantes Cadastrados</label>
+								<input type="zoom" class="form-control" name="zf_324_assinantes" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+											{
+												'field':'A2_LOJA',
+												'label':'A2_LOJA',
+												'standard':true
+											},{
+												'field':'A2_NOME',
+												'label':'A2_NOME'
+											},{
+												'field':'A2_CGC',
+												'label':'A2_CGC'
+											},{
+												'field':'A2_COD',
+												'label':'A2_COD',
+												'visible' : 'false'
+											}
+										]
+									}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<table tablename="tbl_assinantes_324" class="table" noaddbutton="true">
+									<thead>
+										<tr class="tableHeadRow">
+											<th class="tableColumn">CPF</th>
+											<th class="tableColumn">Nome</th>
+											<th class="tableColumn">E-mail</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="tableBodyRow form-input">
+											<td class="col-sm-4">
+												<input type="text" name="txt_324_cpf" class="form-control" readonly>
+											</td>
+											<td class="col-sm-4">
+												<input type="text" name="txt_324_nome" class="form-control" readonly>
+											</td>
+											<td class="col-sm-4">
+												<input type="text" name="txt_324_email" class="form-control" readonly>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NECESSÁRIO FZR TELA analisar 172 -->
+
+			<!-- TELA 25 -->
+			<div class="panel panel-info" id="div_178">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_178"
+							data-target="#distribuirProcesso3" href="#distribuirProcesso3">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Distribuir o processo
+						</a>
+					</h3>
+				</div>
+				<div id="distribuirProcesso3" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_178_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 26 -->
+			<div class="panel panel-info" id="div_180">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_180"
+							data-target="#elaborarContrato" href="#elaborarContrato">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Elaborar contrato ou pedido de compra
+						</a>
+					</h3>
+				</div>
+				<div id="elaborarContrato" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Forma de Contratação</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_180_formaDeContratacao"
+												value="contrato">Contrato</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_180_formaDeContratacao"
+												value="pedido">Pedido</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_180_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 27 -->
+			<div class="panel panel-info" id="div_181">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_181"
+							data-target="#revisarContrato" href="#revisarContrato">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Revisar contrato ou pedido de compras
+						</a>
+					</h3>
+				</div>
+				<div id="revisarContrato" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Aprovado?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_181_revContrato" value="sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_181_revContrato" value="nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_181_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 28 -->
+			<div class="panel panel-info" id="div_265">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_265"
+							data-target="#cadastrar_empresa2" href="#cadastrar_empresa2">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Cadastrar dados do fornecedor
+						</a>
+					</h3>
+				</div>
+				<div id="cadastrar_empresa2" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-group">
+							<div class="col-sm-12">
+								<label for="zoom">Assinantes Cadastrados</label>
+								<input type="zoom" class="form-control" name="zf_265_assinantes" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+											{
+												'field':'A2_LOJA',
+												'label':'A2_LOJA',
+												'standard':true
+											},{
+												'field':'A2_NOME',
+												'label':'A2_NOME'
+											},{
+												'field':'A2_CGC',
+												'label':'A2_CGC'
+											},{
+												'field':'A2_COD',
+												'label':'A2_COD',
+												'visible' : 'false'
+											}
+										]
+									}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<table tablename="tbl_265_assinantes" class="table" noaddbutton="true">
+									<thead>
+										<tr class="tableHeadRow">
+											<th class="tableColumn">CPF</th>
+											<th class="tableColumn">Nome</th>
+											<th class="tableColumn">E-mail</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="tableBodyRow form-input">
+											<td class="col-sm-4">
+												<input type="text" name="txt_265_cpf" class="form-control" readonly>
+											</td>
+											<td class="col-sm-4">
+												<input type="text" name="txt_265_nome" class="form-control" readonly>
+											</td>
+											<td class="col-sm-4">
+												<input type="text" name="txt_265_email" class="form-control" readonly>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 29 -->
+			<div class="panel panel-info" id="div_205">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_205"
+							data-target="#distribuirProcesso2" href="#distribuirProcesso2">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Distribuir o processo
+						</a>
+					</h3>
+				</div>
+				<div id="distribuirProcesso2" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-12">
+								<label>Observações</label>
+								<textarea class="form-control" rows="3" name="atxt_205_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- TELA 30 -->
+			<div class="panel panel-info" id="div_281">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_281"
+							data-target="#receberECadastrar" href="#receberECadastrar">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Receber e cadastrar no protheus
+						</a>
+					</h3>
+				</div>
+				<div id="receberECadastrar" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-6">
+								teste
+							</div>
+							<div class="col-sm-6">
+								teste
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 31 -->
+			<div class="panel panel-info" id="div_283">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_283"
+							data-target="#visualizarResumo" href="#visualizarResumo">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Visualizar Resumo
+						</a>
+					</h3>
+				</div>
+				<div id="visualizarResumo" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-6">
+								teste
+							</div>
+							<div class="col-sm-6">
+								teste
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 30 -->
+			<div class="panel panel-info" id="div_207">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_207"
+							data-target="#receberECadastrar2" href="#receberECadastrar2">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Receber e cadastrar no protheus
+						</a>
+					</h3>
+				</div>
+				<div id="receberECadastrar2" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Tipo Contrato</label>
+								<input type="text" class="form-control" name="txt_207_tipo">
+							</div>
+							<div class="col-sm-2">
+								<label>Data Início</label>
+								<input type="text" class="form-control" name="txt_207_dtInicio">
+							</div>
+							<div class="col-sm-2">
+								<label>Data Assinatura</label>
+								<input type="text" class="form-control" name="txt_207_dtAssinatura">
+							</div>
+							<div class="col-sm-2">
+								<label>Unidade de Vigencia</label>
+								<select class="form-control" name="slc_207_unVigencia">
+									<option value="o1">o1</option>
+									<option value="o2">o2</option>
+								</select>
+							</div>
+							<div class="col-sm-2">
+								<label>Vigência</label>
+								<input type="text" class="form-control" name="slc_207_vig">
+							</div>
+						</div>
+						<div class="row form-input">
+							<div class="col-sm-3">
+								<label>Tipo Planilha</label>
+								<select class="form-control" name="slc_207_tipoPlanilha">
+									<option value="o1">o1</option>
+									<option value="o2">o2</option>
+								</select>
+							</div>
+							<div class="col-sm-3">
+								<label>Condição de Pagamento</label>
+								<input type="text" class="form-control" name="txt_207_condPag">
+							</div>
+							<div class="col-sm-3">
+								<label>Descrição de Pagamento</label>
+								<input type="text" class="form-control" name="txt_207_descPag">
+							</div>
+							<div class="col-sm-3">
+								<label>Caução</label>
+								<input type="text" class="form-control" name="txt_207_caucao">
+							</div>
+						</div>
+						<div class="row form-input">
+							<div class="col-sm-3">
+								<label>Tem reajuste?</label>
+								<select class="form-control" name="slc_207_reajuste">
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="col-sm-3">
+								<label>Indíce</label>
+								<input type="text" class="form-control" name="txt_207_indice">
+							</div>
+							<div class="col-sm-3">
+								<label>Objeto</label>
+								<input type="text" class="form-control" name="txt_207_obj">
+							</div>
+							<div class="col-sm-3">
+								<label>Grupo de Aprovação</label>
+								<input type="text" class="form-control" name="txt_207_gpAp">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 31 -->
+			<!-- NECESSÁRIO SABER SOBRE 2 ENTIDADES -->
+			<div class="panel panel-info" id="div_268">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_268"
+							data-target="#visualizarResumo2" href="#visualizarResumo2">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Visualizar Resumo
+						</a>
+					</h3>
+				</div>
+				<div id="visualizarResumo2" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-6">
+								teste
+							</div>
+							<div class="col-sm-6">
+								teste
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 32 -->
+			<!-- NECESSÁRIO FZR FLUXO DE NEGAÇÃO -->
+			<div class="panel panel-info" id="div_285">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_285"
+							data-target="#apContrato" href="#apContrato">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Aprovar Contrato ou Pedido de Compra
+						</a>
+					</h3>
+				</div>
+				<div id="apContrato" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Aprovado?</label>
+								<div class="radio-options">
+									<div class="radio">
+										<label><input type="radio" name="rd_285_apContrato" value="sim">Sim</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="rd_285_apContrato" value="nao">Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-10">
+								<label>Observações:</label>
+								<textarea class="form-control" rows="3" name="atxt_285_obs"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 33  -->
+			<!-- NECESSÁRIO DESENVOLVER -->
+
+			<!-- FAZER A TELA APROVAR PEDIDO DE COMPRA -->
+
+			<!-- TELA 35 -->
+			<div class="panel panel-info" id="div_270">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_270"
+							data-target="#incluirDocumento" href="#incluirDocumento">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Incluir/Anexar Documento
+						</a>
+					</h3>
+				</div>
+				<div id="incluirDocumento" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-2">
+								<label>Descrição</label>
+								<input type="text" class="form-control" name="txt_270_descricao">
+							</div>
+							<div class="col-sm-2">
+								<label>Contrato</label>
+								<input type="text" class="form-control" name="txt_270_contrato">
+							</div>
+							<div class="col-sm-2">
+								<label>Tipo Documento</label>
+								<input type="text" class="form-control" name="txt_270_tipo">
+							</div>
+							<div class="col-sm-2">
+								<label>Data Emissão</label>
+								<input type="text" class="form-control" name="txt_270_dtEmissao">
+							</div>
+							<div class="col-sm-2">
+								<label>Data Validade</label>
+								<input type="text" class="form-control" name="txt_270_dtValidade">
+							</div>
+						</div>
+						<div class="row form-input">
+							<label>Observações:</label>
+							<textarea class="form-control" rows="3" name="atxt_270_obs"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- TELA 36 -->
+			<div class="panel panel-info" id="div_289">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_289"
+							data-target="#emitirPedido" href="#emitirPedido">
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Emitir pedido de compra
+						</a>
+					</h3>
+				</div>
+				<div id="emitirPedido" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-3">
+								<label>Medição</label>
+								<input type="text" class="form-control" name="txt_289_medicao">
+							</div>
+							<div class="col-sm-4">
+								<label for="zoom">Numero do Contrato</label>
+								<input type="zoom" class="form-control" name="zf_289_numeroContrato" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+											{
+												'field':'A2_LOJA',
+												'label':'A2_LOJA',
+												'standard':true
+											},{
+												'field':'A2_NOME',
+												'label':'A2_NOME'
+											},{
+												'field':'A2_CGC',
+												'label':'A2_CGC'
+											},{
+												'field':'A2_COD',
+												'label':'A2_COD',
+												'visible' : 'false'
+											}
+										]
+									}">
+							</div>
+							<div class="col-sm-1">
+								<label>Revisão</label>
+								<input type="text" class="form-control" name="txt_289_revisao">
+							</div>
+							<div class="col-sm-4">
+								<label for="zoom">Competência</label>
+								<input type="zoom" class="form-control" name="zf_289_competencia" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+											{
+												'field':'A2_LOJA',
+												'label':'A2_LOJA',
+												'standard':true
+											},{
+												'field':'A2_NOME',
+												'label':'A2_NOME'
+											},{
+												'field':'A2_CGC',
+												'label':'A2_CGC'
+											},{
+												'field':'A2_COD',
+												'label':'A2_COD',
+												'visible' : 'false'
+											}
+										]
+									}">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 37 -->
+			<div class="panel panel-info" id="div_291">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_291"
+							data-target="#gerarPDF" href="#gerarPDF">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Gerar PDF
+						</a>
+					</h3>
+				</div>
+				<div id="gerarPDF" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-input">
+							<div class="col-sm-6">
+								<button type="button" class="btn btn-info">Gerar PDF</button>
+							</div>
+							<div class="col-sm-6">
+								<button type="button" class="btn btn-info">Visualizar PDF</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TELA 38 -->
+			<div class="panel panel-info" id="div_293">
+				<!-- trocar o ID -->
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#div_293" data-target="#cadastroAssinante"
+							href="#cadastroAssinante">
+							<!-- trocar o href,data-target, data-parent -->
+							<span class="flaticon flaticon-message icon-sm"></span>
+							Cadastrar Assinantes
+						</a>
+					</h3>
+				</div>
+				<div id="cadastroAssinante" class="panel-collapse collapse">
+					<!-- trocar o ID -->
+					<div class="panel-body">
+						<div class="row form-group">
+							<div class="col-sm-12">
+								<label for="zoom">Assinantes Cadastrados</label>
+								<input type="zoom" class="form-control" name="zf_293_assinantes" data-zoom="{
+										'displayKey':'A2_CGC',
+										'datasetId':'ds_consulta_fornecedor',
+										'maximumSelectionLength':'1',
+										'placeholder':'Escolha a filial',
+										'fields':[
+											{
+												'field':'A2_LOJA',
+												'label':'A2_LOJA',
+												'standard':true
+											},{
+												'field':'A2_NOME',
+												'label':'A2_NOME'
+											},{
+												'field':'A2_CGC',
+												'label':'A2_CGC'
+											},{
+												'field':'A2_COD',
+												'label':'A2_COD',
+												'visible' : 'false'
+											}
+										]
+									}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<table tablename="tbl_assinantes_293" class="table" noaddbutton="true">
+									<thead>
+										<tr class="tableHeadRow">
+											<th class="tableColumn">CPF</th>
+											<th class="tableColumn">Nome</th>
+											<th class="tableColumn">E-mail</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="tableBodyRow form-input">
+											<td class="col-sm-4">
+												<input type="text" name="txt_293_cpf" class="form-control" readonly>
+											</td>
+											<td class="col-sm-4">
+												<input type="text" name="txt_293_nome" class="form-control" readonly>
+											</td>
+											<td class="col-sm-4">
+												<input type="text" name="txt_293_email" class="form-control" readonly>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</form>
+
+
+	<script type="text/javascript">
+		var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118;
+
+		$(document).keydown(function (e) {
+			if (e.keyCode == ctrl) keyDown = true;
+		}).keyup(function (e) {
+			if (e.keyCode == ctrl) keyDown = false;
+		});
+
+		$('[data-only-numbers]').on('keypress', function (e) {
+			if (!e) {
+				var e = window.event;
+			}
+
+			if (e.keyCode > 0 && e.which == 0) {
+				return true;
+			}
+
+			if (e.keyCode) {
+				code = e.keyCode;
+			} else if (e.which) {
+				code = e.which;
+			}
+
+			if (code == 46) {
+				return true;
+			}
+
+			var character = String.fromCharCode(code);
+			if (character == '\b' || character == ' ' || character == '\t') {
+				return true;
+			}
+			if (keyDown && (code == vKey || code == Vkey)) {
+				return (character);
+			} else {
+				return (/[0-9]$/.test(character));
+			}
+		}).on('focusout', function (e) {
+			var $this = $(this);
+			if ($this.val() == "") {
+				return true;
+			}
+			$this.val($this.val().replace(/[^0-9\.]/g, ''));
+		}).on('paste', function (e) {
+			var $this = $(this);
+			setTimeout(function () {
+				$this.val($this.val().replace(/[^0-9\.]/g, ''));
+			}, 5);
+		});
+
+
+
+		$('.create-form-components').on('keyup', 'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]', function () {
+			validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+		});
+
+		$('.create-form-components').on('change', 'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]', function () {
+			validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+		});
+
+		function validationFieldsForm(field, type) {
+			if (type === "checkbox" || type === "radio") {
+				if (!field.is(':checked')) {
+					field.parents('.form-field').addClass('required');
+				} else {
+					field.parents('.form-field').removeClass('required');
+				}
+			} else {
+				if (!field.val().trim()) {
+					field.parents('.form-field').addClass('required');
+				} else {
+					field.parents('.form-field').removeClass('required');
+				}
+			}
+		}
+
+		var $zoomPreview = $(".zoom-preview");
+		if ($zoomPreview.length) {
+			$zoomPreview.parent().removeClass("input-group");
+			$zoomPreview.remove();
+		}
+
+		var ratings = $(".rating");
+		if (ratings.length > 0) ratingStars(ratings);
+		function ratingStars(stars) {
+			$.each(stars, function (i, obj) {
+				var field = $(this).closest(".form-group").find(".rating-value");
+				var tgt = $(obj);
+				tgt.html("");
+				var rating = FLUIGC.stars(tgt, { value: field.val() });
+				rating.on("click", function (o) {
+					field.val($(this).index() + 1);
+				});
+			});
+		}
+
+		$.each($("[data-date]"), function (i, o) {
+			var id = $(o).attr("id");
+			FLUIGC.calendar("#" + id);
+		});
+
+		$(document).ready(function () {
+			$.each($("[data-date]"), function (i, o) {
+				var id = $(o).attr("id");
+				if ($("#" + id).attr("readonly")) {
+					$("#" + id).data('DateTimePicker').disable();
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

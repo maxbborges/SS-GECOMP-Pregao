@@ -41,6 +41,10 @@ function exibirDivsHidden(){
 	}, 300);
 }
 
+function abrirCollapse(){
+	$('.panel-collapse.collapse').addClass('in')
+}
+
 //=========================================================== ATTACHMENTS ===========================================================
 function anexarArquivo(param, nrProcesso, retornoNomeArquivo) {
 	var data = new Date();
@@ -354,4 +358,78 @@ function customDataset(dataset, params, paramsNot, columns) {
 		var result = (DatasetFactory.getDataset(dataset, columns, constraints, null)).values;
 		return result
 	} catch (error) { throw "ERRO!" }
+}
+
+//=========================================================== DATATABLE ===========================================================
+function createDataTable(div,dataRequest,renderContent,header, paramsSearch,template){
+	var myTable = FLUIGC.datatable('#target1', {
+		dataRequest: [
+					  {"id":"1234","name":"Maxwell","uf":"DF"},
+					  {"id":"3334","name":"teste","uf":"uuuf"},
+					  {"id":"1234","name":"Maxwell","uf":"DF"},
+					  {"id":"3334","name":"teste","uf":"uuuf"},
+					  {"id":"1234","name":"Maxwell","uf":"DF"},
+					  {"id":"3334","name":"teste","uf":"uuuf"},
+					  {"id":"1234","name":"Maxwell","uf":"DF"},],
+		renderContent: ['id', 'name', 'uf'],
+		header: [
+			{'title': 'Código'},
+			{'title': 'Nome'},
+			{'title': 'pontos'},
+		],
+		search: {
+			enabled: true,
+			onlyEnterkey: true,
+			onSearch: function(res) {
+				if (!res) {
+					myTable.reload(dataInit);
+				}
+				var dataAll = myTable.getData();
+				var search = dataAll.filter(function(el) {
+					return el.id.toUpperCase().indexOf(res.toUpperCase()) >= 0
+						|| el.name.toUpperCase().indexOf(res.toUpperCase()) >= 0
+						|| el.uf.toUpperCase().indexOf(res.toUpperCase()) >= 0;
+				});
+				if (search && search.length) {
+					myTable.reload(search);
+				} else {
+					FLUIGC.toast({
+						title: 'Searching: ',
+						message: 'No results',
+						type: 'success'
+					});
+				}
+			}
+		},
+		navButtons: {
+			enabled: false,
+		},
+		scroll: {
+			target: "#target",
+			enabled: true
+		},
+		actions: {
+			enabled: true,
+			template: '.template_datatable_edit',
+			actionAreaStyle: 'col-md-6'
+		},
+		navButtons: {
+			enabled: true,
+			forwardstyle: 'btn-warning',
+			backwardstyle: 'btn-warning',
+		},
+		draggable: {
+			enabled: false
+		},
+	}, function(err, data) {
+		if(data) {
+			dataInit = data;
+		}
+		else if (err) {
+			FLUIGC.toast({
+				message: err,
+				type: 'danger'
+			});
+		}
+	});
 }

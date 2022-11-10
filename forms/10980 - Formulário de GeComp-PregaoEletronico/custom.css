@@ -18,3 +18,16 @@ form label.required:after{
     color: #FF0000;
     content: " *";
 }
+
+div#datatable-area {
+    background: none !important;
+}
+
+#dataTable_wbc {
+    overflow-y: auto;
+    height: 350px;
+}
+
+td.bpm-mobile-trash-column {
+    max-width: 32px !important;
+}
