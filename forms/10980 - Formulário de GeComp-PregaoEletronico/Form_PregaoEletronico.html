@@ -63,23 +63,23 @@
 						<div class="row form-input">
 							<div class="col-sm-2">
 								<label>Solicitação</label>
-								<input type="text" class="form-control" name="txt_01_solicitacao">
+								<input type="text" class="form-control" name="txt_01_solicitacao" readonly="readonly">
 							</div>
 							<div class="col-sm-2">
 								<label>E-mail</label>
-								<input type="text" class="form-control" name="txt_01_email">
+								<input type="text" class="form-control" name="txt_01_email" readonly="readonly">
 							</div>
 							<div class="col-sm-2">
 								<label>Data Solicitação</label>
-								<input type="text" class="form-control" name="txt_01_dtSolicitacao">
+								<input type="text" class="form-control" name="txt_01_dtSolicitacao" readonly="readonly">
 							</div>
 							<div class="col-sm-3">
 								<label>Unidade/Coordenação</label>
-								<input type="text" class="form-control" name="txt_01_unidade">
+								<input type="text" class="form-control" name="txt_01_unidade" readonly="readonly">
 							</div>
 							<div class="col-sm-3">
 								<label>Numero Processo</label>
-								<input type="text" class="form-control" name="txt_01_nProcesso">
+								<input type="text" class="form-control" name="txt_01_nProcesso" readonly="readonly">
 							</div>
 						</div>
 						<div class="row form-input">
@@ -112,60 +112,101 @@
 							<div class="col-sm-4">
 								<label for="zoom">CNPJ da Filial</label>
 								<input type="zoom" class="form-control" name="zf_01_cnpjFilial" data-zoom="{
-										'displayKey':'A2_CGC',
-										'datasetId':'ds_consulta_fornecedor',
+										'displayKey':'Cgc',
+										'datasetId':'filiaisProtheus',
 										'maximumSelectionLength':'1',
 										'placeholder':'Escolha a filial',
 										'fields':[
 										{
-											'field':'A2_LOJA',
-											'label':'A2_LOJA',
+											'field':'Cgc',
+											'label':'CNPJ',
 											'standard':true
 										},{
-											'field':'A2_NOME',
-											'label':'A2_NOME'
+											'field':'Description',
+											'label':'Filial'
 										},{
-											'field':'A2_CGC',
-											'label':'A2_CGC'
-										},{
-											'field':'A2_COD',
-											'label':'A2_COD',
-											'visible' : 'false'
+											'field':'Code',
+											'label':'Código'
 										}
 										]
 									}">
 							</div>
 							<div class="col-sm-4">
 								<label>Código Filial</label>
-								<input type="text" class="form-control" name="txt_01_codFilial">
+								<input type="text" class="form-control" name="txt_01_codFilial" readonly="readonly">
 							</div>
 							<div class="col-sm-4">
 								<label>Nome Filial</label>
-								<input type="text" class="form-control" name="txt_01_nmFilial">
+								<input type="text" class="form-control" name="txt_01_nmFilial" readonly="readonly">
 							</div>
 						</div>
 						<div class="row form-input">
 							<div class="col-sm-12">
 								<label for="zoom">Numero SC</label>
 								<input type="zoom" class="form-control" name="zf_01_nSC" data-zoom="{
-										'displayKey':'A2_CGC',
-										'datasetId':'ds_consulta_fornecedor',
+										'displayKey':'C1_DESCRI',
+										'datasetId':'ds_busca_solicitacao_compras',
 										'maximumSelectionLength':'1',
-										'placeholder':'Escolha a filial',
+										'placeholder':'Escolha a SC',
 										'fields':[
 										{
-											'field':'A2_LOJA',
-											'label':'A2_LOJA',
+											'field':'C1_DESCRI',
+											'label':'Descrição',
 											'standard':true
 										},{
-											'field':'A2_NOME',
-											'label':'A2_NOME'
+											'field':'C1_NUM',
+											'label':'Número'
 										},{
-											'field':'A2_CGC',
-											'label':'A2_CGC'
+											'field':'C1_ITEM',
+											'label':'Item',
+											'visible' : 'false'
 										},{
-											'field':'A2_COD',
-											'label':'A2_COD',
+											'field':'C1_CONTA',
+											'label':'Conta',
+											'visible' : 'false'
+										},{
+											'field':'C1_PRODUTO',
+											'label':'Produto',
+											'visible' : 'false'
+										},{
+											'field':'C1_QUANT',
+											'label':'Quantidade',
+											'visible' : 'false'
+										},{
+											'field':'C1_PRECO',
+											'label':'Preço',
+											'visible' : 'false'
+										},{
+											'field':'C1_TOTAL',
+											'label':'Total',
+											'visible' : 'false'
+										},{
+											'field':'C1_CLVL',
+											'label':'C1_CLVL',
+											'visible' : 'false'
+										},{
+											'field':'C1_EC06DB',
+											'label':'C1_EC06DB',
+											'visible' : 'false'
+										},{
+											'field':'C1_EC07DB',
+											'label':'C1_EC07DB',
+											'visible' : 'false'
+										},{
+											'field':'C1_CC',
+											'label':'C1_CC',
+											'visible' : 'false'
+										},{
+											'field':'C1_FILIAL',
+											'label':'Filial',
+											'visible' : 'false'
+										},{
+											'field':'C1_EC05DB',
+											'label':'C1_EC05DB',
+											'visible' : 'false'
+										},{
+											'field':'C1_EC08DB',
+											'label':'C1_EC08DB',
 											'visible' : 'false'
 										}
 										]
@@ -183,45 +224,57 @@
 										<tr class="tableBodyRow">
 											<td>
 												<div class="row form-input">
-													<div class="col-sm-3">
-														<input type="text" name="item_01_nSC" class="form-control">
+													<div class="col-sm-2">
+														<label>Número SC</label> <input type="text"
+															name="item_01_nSC" class="form-control number" readonly="readonly">
 													</div>
-													<div class="col-sm-3">
-														<input type="text" name="item_01_cod" class="form-control">
+													<div class="col-sm-2">
+														<label>Código</label> <input type="text"
+															name="item_01_cod" class="form-control number" readonly="readonly">
 													</div>
-													<div class="col-sm-3">
-														<input type="text" name="item_01_desc" class="form-control">
+													<div class="col-sm-6">
+														<label>Descrição</label> <input type="text"
+															name="item_01_desc" class="form-control" readonly="readonly">
 													</div>
-													<div class="col-sm-3">
-														<input type="text" name="item_01_conta" class="form-control">
-													</div>
-												</div>
-												<div class="row form-input">
-													<div class="col-sm-3">
-														<input type="text" name="item_01_qtd" class="form-control">
-													</div>
-													<div class="col-sm-3">
-														<input type="text" name="item_01_proj" class="form-control">
-													</div>
-													<div class="col-sm-3">
-														<input type="text" name="item_01_prog" class="form-control">
-													</div>
-													<div class="col-sm-3">
-														<input type="text" name="item_01_subprog" class="form-control">
+													<div class="col-sm-2">
+														<label>Conta</label> <input type="text"
+															name="item_01_conta" class="form-control number" readonly="readonly">
 													</div>
 												</div>
 												<div class="row form-input">
 													<div class="col-sm-3">
-														<input type="text" name="item_01_cc" class="form-control">
+														<label>Quantidade</label> <input type="text"
+															name="item_01_qtd" class="form-control numbers" readonly="readonly">
 													</div>
 													<div class="col-sm-3">
-														<input type="text" name="item_01_entidade" class="form-control">
+														<label>Projeto</label> <input type="text"
+															name="item_01_proj" class="form-control" readonly="readonly">
 													</div>
 													<div class="col-sm-3">
-														<input type="text" name="item_01_conselho" class="form-control">
+														<label>Programa</label> <input type="text"
+															name="item_01_prog" class="form-control" readonly="readonly">
 													</div>
 													<div class="col-sm-3">
-														<input type="text" name="item_01_grupoOrc" class="form-control">
+														<label>Subprograma</label> <input type="text"
+															name="item_01_subprog" class="form-control" readonly="readonly">
+													</div>
+												</div>
+												<div class="row form-input">
+													<div class="col-sm-3">
+														<label>Centro de Custo</label> <input type="text"
+															name="item_01_cc" class="form-control" readonly="readonly">
+													</div>
+													<div class="col-sm-3">
+														<label>Entidade</label> <input type="text"
+															name="item_01_entidade" class="form-control" readonly="readonly">
+													</div>
+													<div class="col-sm-3">
+														<label>Conselho</label> <input type="text"
+															name="item_01_conselho" class="form-control" readonly="readonly">
+													</div>
+													<div class="col-sm-3">
+														<label>Grupo Orçamentário</label> <input type="text"
+															name="item_01_grupoOrc" class="form-control" readonly="readonly">
 													</div>
 												</div>
 											</td>
@@ -310,24 +363,24 @@
 							<div class="col-sm-3">
 								<label for="zoom">Regra de Lic</label>
 								<input type="zoom" class="form-control" name="zf_15_regraLic" data-zoom="{
-										'displayKey':'A2_CGC',
-										'datasetId':'ds_consulta_fornecedor',
+										'displayKey':'CO0_DSCRGR',
+										'datasetId':'ds_consulta_regra_licit',
 										'maximumSelectionLength':'1',
-										'placeholder':'Escolha a filial',
+										'placeholder':'Escolha a regra',
 										'fields':[
 										{
-											'field':'A2_LOJA',
-											'label':'A2_LOJA',
+											'field':'CO0_DSCRGR',
+											'label':'Regra',
 											'standard':true
 										},{
-											'field':'A2_NOME',
-											'label':'A2_NOME'
+											'field':'CO0_REGRA',
+											'label':'Código'
 										},{
-											'field':'A2_CGC',
-											'label':'A2_CGC'
+											'field':'CO0_LEI',
+											'label':'Lei'
 										},{
-											'field':'A2_COD',
-											'label':'A2_COD',
+											'field':'CO0_MODSUG',
+											'label':'CO0_MODSUG',
 											'visible' : 'false'
 										}
 										]
@@ -336,58 +389,42 @@
 							<div class="col-sm-3">
 								<label for="zoom">Modalidade Acatada</label>
 								<input type="zoom" class="form-control" name="zf_15_modAcatada" data-zoom="{
-										'displayKey':'A2_CGC',
-										'datasetId':'ds_consulta_fornecedor',
+										'displayKey':'X5_DESCRI',
+										'datasetId':'ds_consulta_modalidade',
 										'maximumSelectionLength':'1',
 										'placeholder':'Escolha a filial',
 										'fields':[
 										{
-											'field':'A2_LOJA',
-											'label':'A2_LOJA',
+											'field':'X5_DESCRI',
+											'label':'Modalidade',
 											'standard':true
-										},{
-											'field':'A2_NOME',
-											'label':'A2_NOME'
-										},{
-											'field':'A2_CGC',
-											'label':'A2_CGC'
-										},{
-											'field':'A2_COD',
-											'label':'A2_COD',
-											'visible' : 'false'
 										}
 										]
 									}">
 							</div>
 							<div class="col-sm-2">
 								<label>Valor Estimado</label>
-								<input type="text" name="txt_valorEstimado" class="form-control">
+								<input type="text" name="txt_valorEstimado" class="form-control money">
 							</div>
 							<div class="col-sm-2">
 								<label for="zoom">Email Gestor</label>
 								<input type="zoom" class="form-control" name="zf_15_gestor" data-zoom="{
-										'displayKey':'A2_CGC',
-										'datasetId':'ds_consulta_fornecedor',
+										'displayKey':'mail',
+										'datasetId':'colleague',
+										'filterValues':'active,true',
 										'maximumSelectionLength':'1',
 										'placeholder':'Escolha a filial',
 										'fields':[
 										{
-											'field':'A2_LOJA',
-											'label':'A2_LOJA',
+											'field':'mail',
+											'label':'E-mail',
 											'standard':true
 										},{
-											'field':'A2_NOME',
-											'label':'A2_NOME'
-										},{
-											'field':'A2_CGC',
-											'label':'A2_CGC'
-										},{
-											'field':'A2_COD',
-											'label':'A2_COD',
-											'visible' : 'false'
+											'field':'colleagueName',
+											'label':'Nome'
 										}
 										]
-									}">
+									}"s>
 							</div>
 						</div>
 
@@ -487,7 +524,7 @@
 				<div id="realizarAnalise" class="panel-collapse collapse">
 					<div class="panel-body">
 						<div class="row form-input">
-							<div class="col-sm-2">
+							<div class="col-sm-6">
 								<label for="zoom">CNPJ</label>
 									<input type="zoom" class="form-control" name="zf_16_cnpj" data-zoom="{
 										'displayKey':'A2_CGC',
@@ -513,46 +550,57 @@
 										]
 									}">
 							</div>
-							<div class="col-sm-2">
+							<div class="col-sm-6">
 								<label for="zoom">Descrição do Item</label>
 									<input type="zoom" class="form-control" name="zf_16_descricaoItem" data-zoom="{
-										'displayKey':'A2_CGC',
-										'datasetId':'ds_consulta_fornecedor',
-										'maximumSelectionLength':'1',
-										'placeholder':'Escolha a filial',
-										'fields':[
-										{
-											'field':'A2_LOJA',
-											'label':'A2_LOJA',
-											'standard':true
-										},{
-											'field':'A2_NOME',
-											'label':'A2_NOME'
-										},{
-											'field':'A2_CGC',
-											'label':'A2_CGC'
-										},{
-											'field':'A2_COD',
-											'label':'A2_COD',
-											'visible' : 'false'
-										}
-										]
-									}">
+											'displayKey':'B1_DESC',
+											'datasetId':'ds_produto_protheus_pregao',
+											'maximumSelectionLength':'1',
+											'placeholder':'Escolha a filial',
+											'fields':[
+											{
+												'field':'B1_DESC',
+												'label':'B1_DESC',
+												'standard':true
+											},{
+												'field':'B1_COD',
+												'label':'B1_COD'
+											},{
+												'field':'B1_TIPO',
+												'label':'B1_TIPO'
+											},{
+												'field':'B1_UM',
+												'label':'B1_UM'
+											},{
+												'field':'B1_LOCPAD',
+												'label':'B1_LOCPAD'
+											},{
+												'field':'B1_CODITE',
+												'label':'B1_CODITE'
+											},{
+												'field':'B1_GRUPO',
+												'label':'B1_GRUPO'
+											},{
+												'field':'B1_FILIAL',
+												'label':'B1_FILIAL'
+											}
+											]
+										}">
 							</div>
-							<div class="col-sm-2">
+							<div class="col-sm-3">
 								<label>Quantitativo</label>
-								<input type="text" class="form-control" name="txt_16_quantitativo">
+								<input type="text" class="form-control number" name="txt_16_quantitativo">
 							</div>
-							<div class="col-sm-2">
+							<div class="col-sm-3">
 								<label>Valor Unitário</label>
-								<input type="text" class="form-control" name="txt_16_vlUnitario">
+								<input type="text" class="form-control money" name="txt_16_vlUnitario">
 							</div>
-							<div class="col-sm-2">
+							<div class="col-sm-3">
 								<label>Valor Total</label>
-								<input type="text" class="form-control" name="txt_16_vlTotal">
+								<input type="text" class="form-control money" name="txt_16_vlTotal">
 							</div>
-							<div class="col-sm-2">
-								<button type="button" class="btn btn-primary" onclick="">Novo Registro</button>
+							<div class="col-sm-3">
+								<button style="margin-top: 25px;" type="button" class="btn btn-primary pull-right" onclick="addNewItemSC();">Novo Registro</button>
 							</div>
 						</div>
 						<div class="row form-input">
@@ -566,23 +614,28 @@
 											<td>
 												<div class="row form-input">
 													<div class="col-sm-2">
+														<label>Empresa</label>
 														<input type="text" name="item_16_empresa" class="form-control">
 													</div>
 													<div class="col-sm-10">
+														<label>Descrição</label>
 														<textarea class="form-control" rows="3"
 															name="item_16_descricao"></textarea>
 													</div>
 												</div>
-												<div class="row form-input">
+												<div class="row form-group">
 													<div class="col-sm-4">
+														<label>Quantitativo</label>
 														<input type="text" name="item_16_quantitativo"
 															class="form-control">
 													</div>
 													<div class="col-sm-4">
+														<label>Valor Unitário</label>
 														<input type="text" name="item_16_vlUnitario"
 															class="form-control">
 													</div>
 													<div class="col-sm-4">
+														<label>Valor Total</label>
 														<input type="text" name="item_16_vlTotal" class="form-control">
 													</div>
 												</div>

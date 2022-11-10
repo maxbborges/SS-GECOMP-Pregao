@@ -216,11 +216,12 @@ function validaCamposRequired(elementoDiv) {
 }
 
 function loadMasks() {
-    $(".money").maskMoney();
+    // $(".money").maskMoney();
     $('.date').mask('00/00/0000');
     $('.money').mask('000.000.000.000.000,00', { reverse: true });
     $('.cpf').mask('000.000.000-00', { reverse: true });
     $('.percent').mask('##0,00%', { reverse: true });
+    $('.number').mask("000000000000009", {reverse: true});
 }
 
 function msgValidade(mensagem) {

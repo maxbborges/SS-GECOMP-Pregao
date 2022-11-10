@@ -1,5 +1,6 @@
 $(document).ready(function () {
     init();
+    loadMasks();
 });
 
 function init() {
@@ -232,4 +233,87 @@ function initDataTableValorUnitario() {
             tabelaValorUnitario.updateRow(tabelaValorUnitario.selectedRows()[0], editedRow);
         })
     });
+}
+
+//=========================================================== SELECTED/REMOVED ZOOM ===========================================================
+
+function setSelectedZoomItem(selectedItem) {   
+	
+
+	switch (selectedItem.inputName) {
+	case "zf_01_cnpjFilial":
+		
+		var txt_01_codFilial = selectedItem["Code"];
+		$('[name="txt_01_codFilial"]').val(txt_01_codFilial);
+		
+		var txt_01_nmFilial = selectedItem["Description"];
+		$('[name="txt_01_nmFilial"]').val(txt_01_nmFilial);
+		break;
+		
+	case "zf_01_nSC":
+		var row = wdkAddChild('tb_itensSC');
+		
+		$('[name="item_01_nSC___'+row+'"]').val(selectedItem["C1_NUM"]);
+		$('[name="item_01_desc___'+row+'"]').val(selectedItem["C1_DESCRI"]);
+		$('[name="item_01_cod___1'+row+'"]').val(selectedItem["C1_CONTA"]);
+		$('[name="item_01_qtd___'+row+'"]').val(selectedItem["C1_QUANT"].split(".")[0]);
+		$('[name="item_01_cc___'+row+'"]').val(selectedItem["C1_CC"]);
+		$('[name="item_01_proj___'+row+'"]').val(selectedItem["C1_CLVL"]);
+		$('[name="item_01_prog___'+row+'"]').val(selectedItem["C1_EC06DB"]);
+		$('[name="item_01_subprog___'+row+'"]').val(selectedItem["C1_EC07DB"]);
+		$('[name="item_01_grupoOrc___'+row+'"]').val(selectedItem["C1_EC08DB"]);
+		$('[name="item_01_conselho___'+row+'"]').val(selectedItem["C1_EC05DB"]);
+	
+		/*MASKS*/
+		MaskEvent.init();
+		$('.number').mask("000000000000009", {reverse: true});
+				
+		break
+
+	}
+}
+
+function removedZoomItem(removedItem) {
+
+	switch (removedItem.inputName) {
+	case "zf_01_cnpjFilial":
+		
+		$('[name="txt_01_codFilial"]').val("");
+		$('[name="txt_01_nmFilial"]').val("");
+		break;
+	case "zf_01_nSC":
+		$("input[name^='item_01_nSC___']").each(function(index, value){
+
+	        fnWdkRemoveChild(this);
+
+		})
+
+	}
+}
+//=========================================================== NEW ITEM AN. MERCADO ===========================================================
+function addNewItemSC(){
+
+	var row = wdkAddChild('tb_16_itensSC');
+	
+	var zf_16_cnpj = $("#zf_16_cnpj").text();
+	var zf_16_descricaoItem = $("#zf_16_descricaoItem").text();
+	
+	var txt_16_quantitativo = $("input[name='txt_16_quantitativo']").val();
+	var txt_16_vlUnitario = $("input[name='txt_16_vlUnitario']").val();
+	var txt_16_vlTotal = $("input[name='txt_16_vlTotal']").val();
+	
+	$("input[name^='item_16_empresa___"+row+"']").val(zf_16_cnpj);
+	$("textarea[name^='item_16_descricao___"+row+"']").val(zf_16_descricaoItem);
+	$("input[name^='item_16_quantitativo___"+row+"']").val(txt_16_quantitativo);
+	$("input[name^='item_16_vlUnitario___"+row+"']").val(txt_16_vlUnitario);
+	$("input[name^='item_16_vlTotal___"+row+"']").val(txt_16_vlTotal);
+	
+	window['zf_16_cnpj'].clear();
+	window['zf_16_descricaoItem'].clear();
+	
+	var txt_16_quantitativo = $("input[name='txt_16_quantitativo']").val('');
+	var txt_16_vlUnitario = $("input[name='txt_16_vlUnitario']").val('');
+	var txt_16_vlTotal = $("input[name='txt_16_vlTotal']").val('');
+	
+	
 }
