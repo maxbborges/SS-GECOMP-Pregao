@@ -174,21 +174,44 @@ function createPdfByForm(listDivsHide, listDivsShow, nrPasta, nrSolicitacao, nmA
 }
 
 //=========================================================== OUTROS ===========================================================
-function hideBlockDivs(divVisivel) {
+function obtemIds(){
+	var retval = []
+    $('.panel.panel-info').each(function(){
+        retval.push($(this).attr('id'))
+    })
+	return retval
+}
+
+function hideBlockDivs(divVisivel,divNaoEditavel) {
+	DIVS=obtemIds()
+	hideDivs=false
 	for (i = 0; i < DIVS.length; i++) {
-		if (DIVS[i] == divVisivel || i == divVisivel) {
+		if($.inArray(DIVS[i], divVisivel)>= 0) {
 			$('#' + DIVS[i] + ' .collapse').collapse('show')
+			hideDivs=true
+			if (buscarModoForm()!='VIEW'){
+				$('#' + DIVS[i] + ' .collapse').collapse('show')	
+				continue;
+			}
 			continue;
 		}
 		$('#' + DIVS[i] + ' button').hide();
 		$('#' + DIVS[i] + ' textarea').prop('readonly', 'true');
-		$('#' + DIVS[i] + ' input').prop('readonly', 'true');
+		$('#' + DIVS[i] + ' input.form-control[type="text"]').prop('readonly', 'true');
+		$('#' + DIVS[i] + ' input.form-control[type="number"]').prop('readonly', 'true');
+		$('#' + DIVS[i] + ' input[type="zoom"]').next().prop("style", "background-color:#f2f2f2")
+		$('#' + DIVS[i] + ' input[type="zoom"]').parent().prop("style", "pointer-events: none")
+		$('#' + DIVS[i] + ' select').prop("style", "pointer-events: none; background-color:#f2f2f2")
 		$('#' + DIVS[i] + ' input:radio:not(:checked)').prop('disabled', 'true');
 		$('#' + DIVS[i] + ' input:checkbox:not(:checked)').prop('disabled', 'true');
 		$('#' + DIVS[i] + ' button').hide();
-
-		if (i > divVisivel) {
-			$('#' + DIVS[i]).hide();
+		
+		if (hideDivs) {
+			if ($.inArray(DIVS[i], divNaoEditavel)>= 0){
+				$('#' + DIVS[i] + ' .collapse').collapse('show')
+			} else {
+				$('#' + DIVS[i]).hide();
+			}
 		}
 	}
 }
